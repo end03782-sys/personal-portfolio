@@ -367,25 +367,84 @@
       color: var(--text-secondary);
     }
 
-    /* ==========================================================================
-       RESPONSIVE MEDIA QUERIES (Mobile & Tablet)
-       ========================================================================== */
-    @media (max-width: 768px) {
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .hero-title {
-        font-size: 36px;
-      }
+/* ==========================================================================
+   1. Base Styles (Mobile First: 320px ~ 639px)
+   默认针对手机端设置，不需要包在任何 @media 里面
+   ========================================================================== */
+@media (width < 640px) {
+  .navbar {
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-      .nav-links {
-        display: none; /* 可后续增加 Mobile Hamburger Menu */
-      }
+  .hero-title {
+    font-size: 32px;
+    line-height: 1.2;
+  }
 
-      .footer-content {
-        flex-direction: column;
-        gap: 24px;
-        align-items: flex-start;
-      }
-    }
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 手机端单列排版 */
+    gap: 20px;
+  }
+}
+
+/* ==========================================================================
+   2. Mobile Landscape & Large Phones (≥ 640px / Tailwind 'sm')
+   ========================================================================== */
+@media (min-width: 640px) {
+  .navbar {
+    padding: 20px 0;
+  }
+  
+  .hero-title {
+    font-size: 40px;
+  }
+}
+
+
+/* ==========================================================================
+   3. Tablets & Small Laptops (≥ 768px / Tailwind 'md')
+   ========================================================================== */
+@media (min-width: 768px) {
+  .navbar {
+    padding: 24px 0;
+  }
+
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(2, 1fr); /* 平板端切换为双列 */
+    gap: 24px;
+  }
+}
+
+
+/* ==========================================================================
+   4. Desktops & Laptops (≥ 1024px / Tailwind 'lg')
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 64px;
+  }
+
+  .project-grid {
+    grid-template-columns: repeat(3, 1fr); /* 桌面端切换为三列 */
+    gap: 32px;
+  }
+}
+
+
+/* ==========================================================================
+   5. Large Screens (≥ 1280px / Tailwind 'xl')
+   ========================================================================== */
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px; /* 限制大屏幕最大宽度，防止内容拉伸变形 */
+    margin: 0 auto;
+  }
+}
