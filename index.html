@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Personal Portfolio</title>
-  
+  <title>Elvis — Aspiring Design Engineer</title>
+  <meta name="description" content="Portfolio of Elvis, an Aspiring Design Engineer bridging UI/UX design, front-end code, and AI workflows to build high-crafted web experiences.">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,11 +29,10 @@
   <header class="hero reveal-section">
     <div class="container">
       <h1 class="hero-title reveal">
-        Bridging <span class="highlight">UI/UX Design</span>, Code & AI Automation.
+        Aspiring <span class="highlight">Design Engineer</span>
       </h1>
       <p class="hero-subtitle reveal">
-        Full-Stack Designer & Front-End Developer<br>
-          Crafting high-crafted digital products and interactive experiences through scalable design systems, production-ready code, and AI-driven workflows.
+        Bridging UI/UX Design, Front-End Code &amp; AI Workflows to craft high-performance digital products and scalable systems.
       </p>
       <div class="hero-cta reveal">
         <a href="#works" class="btn-primary">View Selected Works</a>
@@ -50,9 +49,9 @@
       </div>
       <div class="about-content reveal">
         <p>
-          I am a multi-disciplinary designer and developer focused on the intersection of 
-          <strong>UI/UX Design</strong>, <strong>Front-end Engineering</strong>, and <strong>AI Automation</strong>. 
-          I strive to create seamless digital experiences through scalable design systems and high-quality code.
+          As an <strong>Aspiring Design Engineer</strong>, I work at the intersection of 
+        <strong>UI/UX Design</strong>, <strong>Front-end Engineering</strong>, and <strong>AI Automation</strong>. 
+        I build seamless, high-performance digital experiences through component-driven design systems, production-ready code, and efficient modern workflows.
         </p>
       </div>
     </div>
@@ -190,7 +189,9 @@
           <h2 class="section-title" style="margin-bottom: 8px;">Let's build something together.</h2>
           <p class="footer-text">Open for freelance opportunities & full-stack design roles.</p>
         </div>
-        <a href="mailto:your.email@example.com" class="btn-primary">Send Email</a>
+        <a href="mailto:arcfl0wdesign@gmail.com" id="contact-btn" class="btn-primary">
+          Get In Touch
+        </a>
       </div>
       <div class="footer-text" style="text-align: center; border-top: var(--border-width) solid var(--border-subtle); padding-top: 24px;">
         © 2026 Personal Portfolio. Built with HTML/CSS & Design Tokens.
@@ -215,6 +216,31 @@
     });
 
     revealItems.forEach((item) => observer.observe(item));
+
+    const contactBtn = document.getElementById('contact-btn');
+    const email = 'arcfl0wdesign@gmail.com';
+
+    contactBtn.addEventListener('click', (e) => {
+      // 判断是否为桌面端 (非移动设备)
+      const isDesktop = window.innerWidth >= 768;
+
+      if (isDesktop) {
+        e.preventDefault(); // 阻止原本可能失效的 mailto 行为
+        
+        // 复制邮箱到剪贴板
+        navigator.clipboard.writeText(email).then(() => {
+          const originalText = contactBtn.innerText;
+          contactBtn.innerText = 'Email Copied!'; // 按钮瞬间文案反馈
+          
+          setTimeout(() => {
+            contactBtn.innerText = originalText;
+          }, 2000);
+        }).catch(() => {
+          // 如果浏览器不支持复制，退回到直接打开 Web Gmail
+          window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`, '_blank');
+        });
+      }
+    });
   </script>
 </body>
 </html>
